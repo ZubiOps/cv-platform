@@ -1,0 +1,24 @@
+services:
+
+  cv-site:
+    build: ./app
+    image: zubiops/cv-site:v1
+
+    ports:
+      - "8090:80"
+
+  cv-jenkins:
+    build: ./jenkins
+    image: zubiops/cv-jenkins:v1
+
+    container_name: jenkins
+
+    ports:
+      - "8091:8080"
+
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  jenkins-data:
