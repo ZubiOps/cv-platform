@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t zubiops/cv-site:v1 .'
+                sh 'docker build -t zubiops/cv-site:v1 ./app'
             }
         }
 
