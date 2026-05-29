@@ -12,7 +12,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'docker run -d -p 8081:80 --name test-cv zubiops/cv-site:v1'
-                sh 'curl localhost:8081'
+                sh 'sleep 5'
+                sh 'docker exec test-cv curl localhost'
                 sh 'docker rm -f test-cv'
             }
         }
